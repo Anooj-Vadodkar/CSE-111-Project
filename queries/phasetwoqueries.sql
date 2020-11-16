@@ -92,4 +92,22 @@ INSERT INTO genre(genre, description, quantity_sold, percentage_sold) VALUES ('M
 INSERT INTO yearlycompanysales (company, year, na_sales_millions, eu_sales_millions, jp_sales_millions, other_sales_millions, global_sales_millions) 
 VALUES ('Google', 2019, 0.04, 0.02, 0.00, 0.01, 0.07);
 
+-- Inserting "Among Us", a 2018 game built around multiplayer interactions and witch-hunting deduction.
+INSERT INTO videogamesales(name, platform, year, genre, publisher, na_sales_millions, eu_sales_millions, jp_sales_millions, other_sales_millions, global_sales_millions)
+VALUES ('Among Us', 'PC', 2018, 'Social-Deduction', 'Inner-Sloth', 1.4, 1.1, 0.5, 0.2, 3.2);
+-- only looks at PC because tracking steam sales is easier than downloads across android and apple store
+-- Genre and Publisher are the only things needed to create afterwords
+INSERT INTO genre(genre, description, quantity_sold, percentage_sold) 
+VALUES ('Social-Deduction', 'A Social-Deduction video game is a video game in which a large quantity of 
+players play together to solve a social issue, often trying to witch-hunt the correct select "imposters".',
+3.2, 3.2/(SELECT sum(quantity_sold) FROM genre) * 100);
+-- Company
+INSERT INTO company(company, country, headquarters, founder, year_founded) 
+VALUES 
+('Inner-Sloth', 'USA', 'Seattle, Washington', 'Marcus B.', 2015);
+-- Publisher
+INSERT INTO publisher(publisher, na_sales_millions, eu_sales_millions, jp_sales_millions, other_sales_millions, global_sales_millions) 
+VALUES
+('Inner-Sloth', 1.4, 1.1, 0.5, 0.2, 3.2);
+
 -- Those are all the cases of what can happen when a user inputs a game as a suggestion for an entry. Thank you!
